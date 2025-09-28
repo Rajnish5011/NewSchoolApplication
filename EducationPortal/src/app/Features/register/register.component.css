@@ -1,0 +1,66 @@
+.auth-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  
+}
+.form-group {
+    margin-bottom: 20px; /* Increased margin for better spacing */
+    /* Use flexbox to organize contents vertically and center them */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers all children (label, input, small) horizontally */
+}
+.form-group label {
+    display: block; /* Ensure the label acts as a block element */
+    width: 100%; /* Make the label span the full width of the .form-group */
+    margin-bottom: 5px; /* Space between label and input */
+    font-weight: bold; /* Recommended: make labels clearer */
+    /* Center the label text itself over the centered input field */
+    text-align: left; 
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+small {
+  color: red;
+  font-size: 12px;
+}
+
+/* Background for the login page */
+.auth-container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #6a11cb, #2575fc); /* gradient for educational look */
+}
+/* Login card */
+.auth-container {
+  background-color: #ffffff;
+  padding: 40px 30px;       /* padding added */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+.logo img {
+  width: 250px;       /* adjust as needed */
+  height: auto;
+  margin-bottom: 15px;
+}
