@@ -1,37 +1,55 @@
 <div class="auth-container-wrapper">
-<div class="auth-container">
+  <div class="auth-container">
     <div class="logo">
       <img src="assets/regsiter.jpg" alt="EduPortal Logo" />
     </div>
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <!-- Name -->
- <div class="form-group">
-  <label>Name</label>
-  <input type="text" formControlName="name" placeholder="Enter your name" />
-  <small *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
-    Please enter your name
-  </small>
-</div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Name -->
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" formControlName="name" placeholder="Enter your name" />
+        <small *ngIf="registerForm.get('name')?.touched && registerForm.get('name')?.invalid">
+          Please enter your name
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" class="form-control" formControlName="role">
+            <option [ngValue]="0">Select Role</option> <!-- default value 0 -->
 
-    <!-- Email -->
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" formControlName="email" placeholder="Enter email" />
-      <small *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
-        Valid email required
-      </small>
-    </div>
+          <option *ngFor="let role of roles" [ngValue]="role.roleId">
+            {{ role.roleName }}
+          </option>
+        </select>
+      </div>
 
-    <!-- Password -->
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" formControlName="password" placeholder="Enter password" />
-      <small *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
-        Password must be at least 6 characters
-      </small>
-    </div>
 
-    <button type="submit" [disabled]="registerForm.invalid">Register</button>
-  </form>
-</div>
+      <!-- Email -->
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="Enter email" />
+        <small *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+          Valid email required
+        </small>
+      </div>
+      <!-- Mobile -->
+      <div class="form-group">
+        <label>Mobile</label>
+        <input type="Mobile" formControlName="Mobile" placeholder="Enter Mobile" />
+        <small *ngIf="registerForm.get('Mobile')?.touched && registerForm.get('Mobile')?.invalid">
+          Mobile must be at least 10 digits
+        </small>
+      </div>
+      <!-- Password -->
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" formControlName="password" placeholder="Enter password" />
+        <small *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid">
+          Password must be at least 6 characters
+        </small>
+      </div>
+
+      <button type="submit" [disabled]="registerForm.invalid">Register</button>
+    </form>
+  </div>
 </div>

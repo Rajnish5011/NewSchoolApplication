@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 import { AuthServiceService } from '../../Services/auth-service.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 
@@ -15,10 +15,9 @@ imports: [ReactiveFormsModule]
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   templateUrl: './login.component.html',
   providers: [AuthServiceService], // provide it here
-  // ToastrModule.forRoot() should be imported in your AppModule, not here
 
 
   styleUrl: './login.component.css'

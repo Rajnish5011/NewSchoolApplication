@@ -119,3 +119,69 @@
 .quick-links a:hover {
   background: #16a085;
 }
+.profile-wrapper {
+  position: fixed;   /* ✅ stays on screen and ignores padding */
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+
+.profile-circle {
+  width: 45px;
+  height: -82px;
+  border-radius: 71%;
+  background: #4CAF50;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.profile-circle:hover {
+  background: #45a049;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 50px;   /* below circle */
+  right: 0;
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  width: 220px;
+  text-align: left;
+  z-index: 1000;
+}
+
+.profile-dropdown h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.profile-dropdown p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+.logout-btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background: #e74c3c;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.logout-btn:hover {
+  background: #c0392b;
+}

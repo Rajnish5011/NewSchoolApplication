@@ -14,16 +14,26 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 export class DashboardComponent implements OnInit {
       user: any;        // full user object
   role: string = ''; // just roleName
+  showProfile = false;
    ngOnInit() {
   const userData = localStorage.getItem('user');
-    // if (userData) {
-    //   this.user = JSON.parse(userData);
-    //   this.role = this.user.roleName; // extract role from the object
-    // }
+  console.log('User Data from localStorage:', userData);
+    if (userData) {
+      this.user = JSON.parse(userData);
+      this.role = this.user.roleName; // extract role from the object
+    }
 
-    // console.log('User:', this.user); // {"userId":1,"fullName":"Rajnish Kumar Gupta","phone":"9589029624","status":true,"roleName":"Admin"}
-    // console.log('Role:', this.role); 
+   
 }
+ toggleProfile() {
+    this.showProfile = !this.showProfile;
+  }
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    window.location.reload(); // Reload the page to reset the state
+    window.location.href = '/login'; // Redirect to login page
+  }
     }
   
 
