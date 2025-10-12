@@ -5,15 +5,26 @@ export interface Role {
   roleId: number;
   roleName: string;
 }
+
+
+export interface DashboardMetrics {
+  totalStudents: number;
+  totalClasses: number;
+  totalTeachers: number;
+  feesCollectedThisMonth: number;
+  attendanceTodayPercentage: number;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
-
 export class AuthServiceService  {
   private baseUrl = 'https://localhost:44320/api';
   private token: string | null = null;
   constructor(private http: HttpClient) { }
 
+  
   login(email: string, password: string) {
     return this.http.get(`${this.baseUrl}/auth/login`, {
       params: { email, passWordHash: password }
@@ -49,4 +60,14 @@ register(user: any, roleId: number) {
  getRoles(): Observable<Role[]> {
     return this.http.get<Role[]>(`${this.baseUrl}/auth/roles`);
   }
+  
+  getDashboardMetrics(): Observable<DashboardMetrics> {
+    return this.http.get<DashboardMetrics>(`${this.baseUrl}/dashboard/totalCounts`);
+  }
+  getAttdanceCalendar(startDate: string, endDate: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/dashboard/attendanceCalendar`, {
+      params: { startDate, endDate }
+    });
+  }
 }
+//this.http.get<any[]>(`/api/attendanceCalendar?startDate=${startDate}&endDate=${endDate}`)

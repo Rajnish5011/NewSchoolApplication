@@ -1,0 +1,37 @@
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* spacing between items */
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.legend span {
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.legend span:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.present {
+  background: linear-gradient(135deg, #28a745, #2ecc71);
+}
+
+.absent {
+  background: linear-gradient(135deg, #e74c3c, #ff5c5c);
+}
+
+.leave {
+  background: linear-gradient(135deg, #f39c12, #f1c40f);
+}

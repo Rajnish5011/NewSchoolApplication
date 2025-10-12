@@ -1,96 +1,107 @@
-<div class="dashboard-container">
-  <!-- Profile Details -->
- <div class="profile-wrapper">
-  <!-- Profile Circle -->
-  <div class="profile-circle" (click)="toggleProfile()">
-    {{ user?.fullName.charAt(0) }}
+<div class="layout">
+  <!-- Sidebar -->
+   <button class="sidebar-toggle" (click)="toggleSidebar()">
+  ☰
+</button>
+  <aside class="sidebar" [class.collapsed]="isSidebarCollapsed">
+    <div class="sidebar-header">
+      <h2>MyApp</h2>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a routerLink="/dashboard" routerLinkActive="active">
+        🏠 <span>Dashboard</span>
+      </a>
+      <a routerLink="/landing" routerLinkActive="active">
+        📝 <span>Landing Page</span>
+      </a>
+      <a routerLink="/navigation" routerLinkActive="active">
+        🧭 <span>Navigation</span>
+      </a>
+      <a routerLink="/content" routerLinkActive="active">
+        📄 <span>Content Pages</span>
+      </a>
+      <a routerLink="/settings" routerLinkActive="active">
+        ⚙️ <span>Settings</span>
+      </a>
+      <a routerLink="/community" routerLinkActive="active">
+        👥 <span>Community</span>
+      </a>
+      <a routerLink="/analytics" routerLinkActive="active">
+        📊 <span>Analytics</span>
+      </a>
+      <a routerLink="/images" routerLinkActive="active">
+        🖼️ <span>Images</span>
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="dashboard-container">
+      <!-- ✅ Your existing dashboard code starts here -->
+
+      <!-- Profile Details -->
+      <div class="profile-wrapper">
+        <div class="profile-circle" (click)="toggleProfile()">
+          {{ user?.fullName.charAt(0) }}
+        </div>
+
+        <div class="profile-dropdown" *ngIf="showProfile">
+          <h3>{{ user?.fullName }}</h3>
+          <p><strong>Role:</strong> {{ user?.roleName }}</p>
+          <p><strong>Phone:</strong> {{ user?.phone }}</p>
+          <p><strong>Email:</strong> {{ user?.email || 'N/A' }}</p>
+          <button class="logout-btn" (click)="logout()">Logout</button>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+     <div class="dashboard-grid">
+  <div class="card bg-blue">
+    <div class="card-icon">👨‍🏫</div>
+    <div class="card-title">Total Teachers</div>
+    <div class="card-number">{{ metrics.totalTeachers }}</div>
   </div>
 
-  <!-- Dropdown details -->
-  <div class="profile-dropdown" *ngIf="showProfile">
-    <h3>{{ user?.fullName }}</h3>
-    <p><strong>Role:</strong> {{ user?.roleName }}</p>
-    <p><strong>Phone:</strong> {{ user?.phone }}</p>
-    <p><strong>Email:</strong> {{ user?.email || 'N/A' }}</p>
-      <button class="logout-btn" (click)="logout()">Logout</button>
+  <div class="card bg-green">
+    <div class="card-icon">🧒</div>
+    <div class="card-title">Total Students</div>
+    <div class="card-number">{{ metrics.totalStudents }}</div>
+  </div>
 
+  <div class="card bg-yellow">
+    <div class="card-icon">📝</div>
+    <div class="card-title">Active Classes</div>
+    <div class="card-number">{{ metrics.totalClasses }}</div>
+  </div>
+
+  <div class="card bg-red">
+    <div class="card-icon">💰</div>
+    <div class="card-title">Fees Collected</div>
+    <div class="card-number">₹{{ metrics.feesCollectedThisMonth }}</div>
+  </div>
+
+  <div class="card bg-purple">
+    <div class="card-icon">🕓</div>
+    <div class="card-title">Attendance Today</div>
+    <div class="card-number">{{ metrics.attendanceTodayPercentage }}%</div>
   </div>
 </div>
 
 
-  <!-- Stats Cards -->
-  <div class="dashboard-grid">
-    <div class="dashboard-card card-strength">
-      <div class="card-icon"></div>
-      <div class="card-info">
-        <div class="card-title">Total Strength</div>
-        <div class="card-value">500</div>
-      </div>
+      <!-- Quick Links -->
+      <section class="dashboard-section">
+        <h2>Quick Links</h2>
+        <div class="quick-links">
+          <a href="#">Register New Student</a>
+          <a href="/attendance">View Attendance</a>
+          <a href="#">Fee Details</a>
+          <a href="#">Notifications</a>
+        </div>
+      </section>
+
+      <!-- ✅ Your existing dashboard code ends here -->
     </div>
-
-    <div class="dashboard-card card-registration">
-      <div class="card-icon">📝</div>
-      <div class="card-info">
-        <div class="card-title">Total Registration</div>
-        <div class="card-value">450</div>
-      </div>
-    </div>
-
-    <div class="dashboard-card card-withdrawn">
-      <div class="card-icon">❌</div>
-      <div class="card-info">
-        <div class="card-title">Total Withdrawn</div>
-        <div class="card-value">50</div>
-      </div>
-    </div>
-
-    <div class="dashboard-card card-active">
-      <div class="card-icon">✅</div>
-      <div class="card-info">
-        <div class="card-title">Active Students</div>
-        <div class="card-value">400</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Announcements Section -->
-  <!-- <section class="dashboard-section">
-    <h2>Announcements</h2>
-    <ul class="announcement-list">
-      <li>Semester exams start from 15th October.</li>
-      <li>Library timings extended till 8 PM.</li>
-      <li>New online courses added to the portal.</li>
-    </ul>
-  </section> -->
-
-  <!-- Attendance Section -->
-  <!-- <section class="dashboard-section">
-    <h2>Attendance Summary</h2>
-    <div class="attendance-grid">
-      <div class="attendance-card">
-        <div class="attendance-title">Class 1</div>
-        <div class="attendance-value">92%</div>
-      </div>
-      <div class="attendance-card">
-        <div class="attendance-title">Class 2</div>
-        <div class="attendance-value">88%</div>
-      </div>
-      <div class="attendance-card">
-        <div class="attendance-title">Class 3</div>
-        <div class="attendance-value">95%</div>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- Quick Links Section -->
-  <section class="dashboard-section">
-    <h2>Quick Links</h2>
-    <div class="quick-links">
-      <a href="#">Register New Student</a>
-      <a href="#">View Attendance</a>
-      <a href="#">Fee Details</a>
-      <a href="#">Notifications</a>
-    </div>
-  </section>
-
+  </main>
 </div>

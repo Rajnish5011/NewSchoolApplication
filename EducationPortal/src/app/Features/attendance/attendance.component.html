@@ -1,1 +1,12 @@
 <p>attendance works!</p>
+<div class="attendance-buttons">
+  <button class="present" (click)="filterAttendance('Present')">Present</button>
+  <button class="absent" (click)="filterAttendance('Absent')">Absent</button>
+  <button class="leave" (click)="filterAttendance('Leave')">Leave</button>
+  <button (click)="showAllAttendance()">Show All</button>
+
+</div>
+
+<full-calendar [options]="calendarOptions"></full-calendar>
+
+
